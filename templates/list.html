@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    List
+{% endblock %}
+
+{% block main %}
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <ul>
+        {% for entry in lista %}
+            <li>{{ entry["title"] }} - {{ entry["genre"] }}</li>
+        {% endfor %}
+    </ul>
+    <form action="/list" method="post">
+            <select name="genre">
+                    <option value="" selected disabled>Select an option</option>
+                    <option value="Movie">Movie</option>
+                    <option value="Show">TV Show</option>
+                    <option value="Anime">Anime</option>
+                    <option value="Manga">Manga/Comics</option>
+                    <option value="Game">Game</option>
+                    <option value="Book">Book</option>
+            </select>
+            <div>
+                <input name="title" placeholder="Title" type="text">
+            </div>
+            <button class="btn btn-primary" type="submit">Add to the list</button>
+    </form>
+</div>
+{% endblock %}

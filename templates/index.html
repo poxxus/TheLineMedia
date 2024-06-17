@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    theLineMedia
+{% endblock %}
+
+{% block main %}
+
+<div style= "text-align: center;">
+    <img src="static/TheLineMedia-cortado.png" alt="logo">
+    <p>
+     <button class="btn btn-primary" onclick="showNextItem()">Next Item in Line</button>
+    </p>
+    <p id="display">
+    </p>
+</div>
+<script>
+    let list = {{ lista | tojson }};
+    let index = 0;
+
+    function showNextItem() {
+        if (index < list.length) {
+            document.getElementById('display').innerText = list[index]["title"];
+            index++;
+        }
+    }
+</script>
+{% endblock %}
